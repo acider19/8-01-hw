@@ -87,6 +87,8 @@
         msg: "{{ nginx_version.stderr }}"
 ```
 
+![Запуск плейбука test_nginx.yaml](./img/screen3.png)`
+
 ```
 ---
 - name: test_http.yaml
@@ -112,8 +114,6 @@
       ansible.builtin.debug:
         msg: "HTTP status for web-b {{ web_b_result.status }}"
 ```
-![Запуск плейбука test_nginx.yaml](./img/screen3.png)`
-
 ![Запуск плейбука test_http.yaml](./img/screen4.png)
 
 3. Скриншот развернутых в Яндекс Облаке виртуальных машин
