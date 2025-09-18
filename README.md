@@ -68,9 +68,9 @@
 
 2. Подготовлены playbook'и для проверки работоспособности nginx на web-a и web-b
 
-```test_nginx.yaml
+```
 ---
-- name: test nginx install
+- name: test_nginx.yaml
   gather_facts: false
   hosts: webservers
   vars:
@@ -87,9 +87,9 @@
         msg: "{{ nginx_version.stderr }}"
 ```
 
-```test_http.yaml
+```
 ---
-- name: Check HTTP page via jump host
+- name: test_http.yaml
   hosts: bastion
   vars:
     ansible_ssh_user: user
@@ -114,8 +114,11 @@
 ```
 ![Запуск плейбука test_nginx.yaml](./img/screen3.png)`
 
-![Запуск плейбука test_http.yaml](./img/screen2.png)
+![Запуск плейбука test_http.yaml](./img/screen4.png)
 
+3. Скриншот развернутых в Яндекс Облаке виртуальных машин
+
+![Скриншот](./img/screen2.png)
 
 ### Задание 3
 
