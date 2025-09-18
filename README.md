@@ -37,9 +37,11 @@
 
 Провести тестирование и приложить скриншоты развернутых в облаке ВМ, успешно отработавшего ansible playbook.
 
+1. Составлен playbook для установки nginx на web-a и web-b.
+
 ```
 ---
-- name: test
+- name: nginx
   gather_facts: false
   hosts: webservers
   vars:
@@ -61,10 +63,59 @@
       name: "nginx.service"
       enabled:
 ```
-![Запуск плейбука](./img/screen1.png)`
+![Запуск плейбука nginx.yaml](./img/screen1.png)`
 
 
+2. Подготовлены playbook'и для проверки работоспособности nginx на web-a и web-b
+
+```test_nginx.yaml
 ---
+- name: test nginx install
+  gather_facts: false
+  hosts: webservers
+  vars:
+    ansible_ssh_user: user
+  become: yes
+  tasks:
+    - name: Выполнить команду nginx -v
+      ansible.builtin.command: nginx -v
+      register: nginx_version
+      ignore_errors: yes
+
+    - name: Вывести результат
+      ansible.builtin.debug:
+        msg: "{{ nginx_version.stderr }}"
+```
+
+```test_http.yaml
+---
+- name: Check HTTP page via jump host
+  hosts: bastion
+  vars:
+    ansible_ssh_user: user
+  gather_facts: false
+  tasks:
+    - name: Check HTTP page on web-a
+      ansible.builtin.uri:
+        url: "http://10.0.1.17"
+        method: GET
+      register: web_a_result
+    - name: Print result
+      ansible.builtin.debug:
+        msg: "HTTP status for web-a {{ web_a_result.status }}"
+    - name: Check HTTP page on web-b
+      ansible.builtin.uri:
+        url: "http://10.0.2.26"
+        method: GET
+      register: web_b_result
+    - name: Print result
+      ansible.builtin.debug:
+        msg: "HTTP status for web-b {{ web_b_result.status }}"
+```
+![Запуск плейбука test_nginx.yaml](./img/screen3.png)`
+
+![Запуск плейбука test_http.yaml](./img/screen2.png)
+
 
 ### Задание 3
 
