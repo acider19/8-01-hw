@@ -107,6 +107,31 @@
 
 Прикрепите в файл README.md код скрипта, а также скриншот Latest data с результатом работы скрипта на bash, чтобы был виден результат работы скрипта при отправке в него 1 и 2
 
+```bash
+#!/bin/bash
+
+case "$1" in
+    1)
+        echo "Муравский Артем Валерьевич"
+        ;;
+    2)
+        date +"%d.%m.%Y"
+        ;;
+    *)
+        echo "Ошибка: используйте 1 или 2 как аргумент"
+        exit 1
+        ;;
+esac
+```
+
+![latest data all view](/img/screen6.png)
+
+![latest data item 1](/img/screen7.png)
+
+![latest data item 2](/img/screen8.png)
+
+![latest data item 3](/img/screen9.png)
+
 ### Задание 7
 
 Доработайте Python-скрипт из лекции, создайте для него UserParameter и прикрепите его к созданному вами ранее шаблону. Скрипт должен:
