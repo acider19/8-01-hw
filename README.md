@@ -33,7 +33,7 @@ rsync -a -c -v --progress --exclude='.*/' . /tmp/backup
 rsync -av --delete ~/ /tmp/backup/ && logger "Backup OK" || logger "Backup FAILED"
 ```
 
-![/var/spool/cron/crontabs/user](/cfg/crontab)
+[/var/spool/cron/crontabs/user](/cfg/crontab)
 
 ![scrip rsync](/img/screen2.png)
 
