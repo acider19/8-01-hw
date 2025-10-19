@@ -1,0 +1,15 @@
+#/etc/nginx/sites-enabled/default
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        server_name _;
+
+        location / {
+                proxy_pass      http://10.129.0.19:8088;
+        }
+
+        location ~* \.(jpg|jpeg|png|gif)$ {
+                root /var/www/pictures;
+        }
+}

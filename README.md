@@ -9,7 +9,7 @@
 - Настройте балансировку Round-robin на 4 уровне.
 - На проверку направьте конфигурационный файл haproxy, скриншоты, где видно перенаправление запросов на разные серверы при обращении к HAProxy.
 
-[haproxy.conf](/cfg/z1_haproxy.cfg)
+[/etc/haproxy/haproxy.cfg](/cfg/z1_haproxy.cfg)
 
 ![roundrobin balancing](/img/screen1.png)
 
@@ -23,7 +23,7 @@
 - HAproxy должен балансировать только тот http-трафик, который адресован домену example.local
 - На проверку направьте конфигурационный файл haproxy, скриншоты, где видно перенаправление запросов на разные серверы при обращении к HAProxy c использованием домена example.local и без него.
 
-[haproxy.conf](/cfg/z2_haproxy.cfg)
+[/etc/haproxy/haproxy.cfg](/cfg/z2_haproxy.cfg)
 
 ![examplecom balancing](/img/screen2.png)
 
@@ -36,47 +36,9 @@
 - Настройте Nginx так, чтобы файлы .jpg выдавались самим Nginx (предварительно разместите несколько тестовых картинок в директории /var/www/), а остальные запросы переадресовывались на HAProxy, который в свою очередь переадресовывал их на два Simple Python server.
 - На проверку направьте конфигурационные файлы nginx, HAProxy, скриншоты с запросами jpg картинок и других файлов на Simple Python Server, демонстрирующие корректную настройку.
 
-```conf
-#/etc/nginx/sites-enabled/default
-server {
-        listen 80 default_server;
-        listen [::]:80 default_server;
+[/etc/nginx/site-enabled/default](/cfg/z3_default)
 
-        server_name _;
-
-        location / {
-                proxy_pass      http://10.129.0.19:8088;
-        }
-
-        location ~* \.(jpg|jpeg|png|gif)$ {
-                root /var/www/pictures;
-        }
-}
-```
-
-```conf
-#/etc/haproxy/haproxy.cfg
-listen stats  # веб-страница со статистикой
-        bind                    :888
-        mode                    http
-        stats                   enable
-        stats uri               /stats
-        stats refresh           5s
-        stats realm             Haproxy\ Statistics
-
-frontend example  # секция фронтенд
-        mode http
-        bind 10.129.0.19:8088
-        default_backend web_servers
-
-backend web_servers    # секция бэкенд
-        mode http
-        balance roundrobin
-        option httpchk
-        http-check send meth GET uri /index.html
-        server s1 10.129.0.19:8888 check
-        server s2 10.129.0.19:9999 check
-```
+[/etc/haproxy/haproxy.cfg](/cfg/z3_haproxy.cfg)
 
 ![nginx+haproxy](/img/screen3.png)
 
@@ -89,6 +51,6 @@ backend web_servers    # секция бэкенд
 - Настройте фронтенд HAProxy так, чтобы в зависимости от запрашиваемого сайта example1.local или example2.local запросы перенаправлялись на разные бэкенды HAProxy
 - На проверку направьте конфигурационный файл HAProxy, скриншоты, демонстрирующие запросы к разным фронтендам и ответам от разных бэкендов.
 
-[haproxy.conf](/cfg/z4_haproxy.cfg)
+[/etc/haproxy/haproxy.cfg](/cfg/z4_haproxy.cfg)
 
 ![two backend](/img/screen4.png)
