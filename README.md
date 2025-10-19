@@ -27,6 +27,8 @@ listen web_tcp
         server s2 10.129.0.19:9999 check inter 3s
 ```
 
+[haproxy.conf](/cfg/z1_haproxy.conf)
+
 ![roundrobin balancing](/img/screen1.png)
 
 
@@ -133,38 +135,6 @@ backend web_servers    # секция бэкенд
 - Настройте фронтенд HAProxy так, чтобы в зависимости от запрашиваемого сайта example1.local или example2.local запросы перенаправлялись на разные бэкенды HAProxy
 - На проверку направьте конфигурационный файл HAProxy, скриншоты, демонстрирующие запросы к разным фронтендам и ответам от разных бэкендов.
 
-```conf
-listen stats  # веб-страница со статистикой
-        bind                    :888
-        mode                    http
-        stats                   enable
-        stats uri               /stats
-        stats refresh           5s
-        stats realm             Haproxy\ Statistics
-
-frontend example  # секция фронтенд
-        mode http
-        bind 10.129.0.19:8088
-        acl ACL_example1.local hdr(host) -i example1.local
-        use_backend first_backend if ACL_example1.local
-        acl ACL_example2.local hdr(host) -i example2.local
-        use_backend second_backend if ACL_example2.local
-
-backend first_backend    # секция бэкенд
-        mode http
-        balance roundrobin
-        option httpchk
-        http-check send meth GET uri /index.html
-        server s1 10.129.0.19:1111 check
-        server s2 10.129.0.19:2222 check
-
-backend second_backend
-        mode http
-        balance roundrobin
-        option httpchk
-        http-check send meth GET uri /index.html
-        server s1 10.129.0.19:3333 check
-        server s2 10.129.0.19:4444 check
-```
+[haproxy.conf](/cfg/z4_haproxy.conf)
 
 ![two backend](/img/screen4.png)
