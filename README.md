@@ -80,7 +80,8 @@ backend web_servers    # секция бэкенд
 - Настройте Nginx так, чтобы файлы .jpg выдавались самим Nginx (предварительно разместите несколько тестовых картинок в директории /var/www/), а остальные запросы переадресовывались на HAProxy, который в свою очередь переадресовывал их на два Simple Python server.
 - На проверку направьте конфигурационные файлы nginx, HAProxy, скриншоты с запросами jpg картинок и других файлов на Simple Python Server, демонстрирующие корректную настройку.
 
-```/etc/nginx/sites-enabled/default
+```conf
+#/etc/nginx/sites-enabled/default
 server {
         listen 80 default_server;
         listen [::]:80 default_server;
@@ -99,7 +100,8 @@ server {
 }
 ```
 
-```/etc/haproxy/haproxy.cfg
+```conf
+#/etc/haproxy/haproxy.cfg
 listen stats  # веб-страница со статистикой
         bind                    :888
         mode                    http
