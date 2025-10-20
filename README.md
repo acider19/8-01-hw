@@ -60,12 +60,10 @@ rsync -av --bwlimit=1000 --progress /home/junk/big_test_file  junk@10.129.0.5:/t
 
 На проверку направьте скрипт и скриншоты, демонстрирующие его работу в различных сценариях
 
-```
-Поле для вставки кода...
-....
-....
-....
-....
-```
+[backup_script.sh](/cfg/backup_script.sh)
 
-![rsync script 2](/img/screen4.png)
+[restore_script.sh](/cfg/restore_script.sh)
+
+![работа backup_script.sh](/img/screen4.png)
+
+![rработа restore_script.sh](/img/screen5.png)
