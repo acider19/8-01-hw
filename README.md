@@ -28,10 +28,7 @@ rsync -a -c -v --progress --exclude='.*/' . /tmp/backup
 
 На проверку направить файл crontab и скриншот с результатом работы утилиты
 
-```bash
-#!/bin/bash
-rsync -av --delete ~/ /tmp/backup/ && logger "Backup OK" || logger "Backup FAILED"
-```
+[backup_home.sh](/cfg/backup_home.sh)
 
 [/var/spool/cron/crontabs/junk](/cfg/crontab)
 
