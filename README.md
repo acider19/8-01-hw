@@ -24,7 +24,7 @@
 ### Задание 3. Подготовка HA кластера
 
 
-![rabbitmq install](/img/screen4.png)
+![ha cluster](/img/screen4.png)
 
 ### Задание 4.  Ansible playbook
 
