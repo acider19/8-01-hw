@@ -22,9 +22,20 @@
 
 Приложите скриншоты конфигурации, выполнения работы: состояния и режимы работы серверов.
 
+Master-сервер: конфигурация
+
+![master config](img/screen4.png)
+
+
 Master-сервер: вывод команд `SHOW MASTER STATUS\G` и `SELECT * FROM test_table;`
 
 ![master](img/screen1.png)
+
+---
+
+Slave-сервер: конфигурация
+
+![slave config](img/screen5.png)
 
 
 Slave-сервер: вывод команды `SHOW SLAVE STATUS\G`
@@ -34,7 +45,7 @@ Slave-сервер: вывод команды `SHOW SLAVE STATUS\G`
 
 Slave-сервер: продолжение вывода команды `SHOW SLAVE STATUS\G` и вывод `SELECT * FROM test_table;`
 
-![slave1](img/screen3.png)
+![slave2](img/screen3.png)
 
 ---
 
