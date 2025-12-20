@@ -22,6 +22,8 @@
 
 Приложите скриншоты конфигурации, выполнения работы: состояния и режимы работы серверов.
 
+--
+
 Master-сервер: конфигурация
 
 ![master config](img/screen4.png)
@@ -55,5 +57,30 @@ Slave-сервер: продолжение вывода команды `SHOW SLA
 
 Приложите скриншоты конфигурации, выполнения работы: состояния и режимы работы серверов.
 
-`При необходимости прикрепитe сюда скриншоты
-![Название скриншота](ссылка на скриншот)`
+---
+
+Master-1-сервер: конфигурация
+
+![master-1 config](img/screen6png)
+
+Master-1-сервер: вывод команд `SHOW MASTER STATUS\G` и создание в таблице test_db записи "Master-1 Record"
+
+![master-1-1](img/screen8.png)
+
+Master-1-сервер: просмотр таблицы test_db на наличии записи "Master-2 Record"
+
+![master-1-2](img/screen9.png)
+
+---
+
+Master-2-сервер: конфигурация
+
+![master-2 config](img/screen7.png)
+
+Master-2-сервер: вывод команд `SHOW MASTER STATUS\G` и просмотр таблицы test_db на наличии записи "Master-1 Record"
+
+![master-2-1](img/screen10.png)
+
+Master-2-сервер: создание в таблице test_db записи "Master-2 Record"
+
+![master-2-2](img/screen11.png)
