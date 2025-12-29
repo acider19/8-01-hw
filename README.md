@@ -90,12 +90,12 @@ Master по-прежнему принимает все записи.
 ```mermaid
 flowchart TB
   APP[Application] --> U[(DB_USERS Primary RW)]
-  APP --> B[(DB_BOOKS Primary RW)]
-  APP --> S[(DB_STORES Primary RW)]
+  APP --> B[(DB_BOOKS Primary<br/>RW)]
+  APP --> S[(DB_STORES Primary<br/>RW)]
 
-  U --> URO[(DB_USERS Replica RO)]
-  B --> BRO[(DB_BOOKS Replica RO)]
-  S --> SRO[(DB_STORES Replica RO)]
+  U --> URO[(DB_USERS Replica<br/>RO)]
+  B --> BRO[(DB_BOOKS Replica<br/>RO)]
+  S --> SRO[(DB_STORES Replica<br/>RO)]
 ```
 
 
@@ -125,18 +125,18 @@ Replica (RO) — чтение.
 
 ```mermaid
 flowchart TB
-  APP[Application] --> R[Shard Router\nuser id to shard]
+  APP[Application] --> R[Shard Router<br/>user id to shard]
 
-  APP --> BOOKS[DB BOOKS\nPrimary RW]
-  APP --> STORES[DB STORES\nPrimary RW]
+  APP --> BOOKS[DB BOOKS<br/>Primary RW]
+  APP --> STORES[DB STORES<br/>Primary RW]
 
-  R --> U0[DB USERS 0\nPrimary RW]
-  R --> U1[DB USERS 1\nPrimary RW]
-  R --> U2[DB USERS 2\nPrimary RW]
+  R --> U0[DB USERS 0<br/>Primary RW]
+  R --> U1[DB USERS 1<br/>Primary RW]
+  R --> U2[DB USERS 2<br/>Primary RW]
 
-  U0 --> U0RO[DB USERS 0 Replica\nRO]
-  U1 --> U1RO[DB USERS 1 Replica\nRO]
-  U2 --> U2RO[DB USERS 2 Replica\nRO]
+  U0 --> U0RO[DB USERS 0 Replica<br/>RO]
+  U1 --> U1RO[DB USERS 1 Replica<br/>RO]
+  U2 --> U2RO[DB USERS 2 Replica<br/>RO]
 ```
 
 ---
