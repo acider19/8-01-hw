@@ -125,7 +125,7 @@ Replica (RO) — чтение.
 
 ```mermaid
 flowchart TB
-  APP[Application] --> R[Shard Router (user_id -> shard)]
+  APP[Application] --> R[Shard Router\n(user_id -> shard)]
   APP --> BOOKS[(DB_BOOKS Primary RW)]
   APP --> STORES[(DB_STORES Primary RW)]
 
