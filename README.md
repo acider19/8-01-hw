@@ -125,17 +125,18 @@ Replica (RO) — чтение.
 
 ```mermaid
 flowchart TB
-  APP[Application] --> R[Shard Router\n(user_id -> shard)]
-  APP --> BOOKS[(DB_BOOKS Primary RW)]
-  APP --> STORES[(DB_STORES Primary RW)]
+  APP[Application] --> R[Shard Router\nuser id to shard]
 
-  R --> U0[(DB_USERS_0 Primary RW)]
-  R --> U1[(DB_USERS_1 Primary RW)]
-  R --> U2[(DB_USERS_2 Primary RW)]
+  APP --> BOOKS[DB BOOKS\nPrimary RW]
+  APP --> STORES[DB STORES\nPrimary RW]
 
-  U0 --> U0RO[(DB_USERS_0 Replica RO)]
-  U1 --> U1RO[(DB_USERS_1 Replica RO)]
-  U2 --> U2RO[(DB_USERS_2 Replica RO)]
+  R --> U0[DB USERS 0\nPrimary RW]
+  R --> U1[DB USERS 1\nPrimary RW]
+  R --> U2[DB USERS 2\nPrimary RW]
+
+  U0 --> U0RO[DB USERS 0 Replica\nRO]
+  U1 --> U1RO[DB USERS 1 Replica\nRO]
+  U2 --> U2RO[DB USERS 2 Replica\nRO]
 ```
 
 ---
