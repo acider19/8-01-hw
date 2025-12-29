@@ -105,7 +105,7 @@ flowchart TB
 
   P --> B[Backup storage<br/>daily full backup]
   P --> L[Log storage<br/>binlog or WAL]
-
+```
 
 ---
 
