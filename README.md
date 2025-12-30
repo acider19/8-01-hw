@@ -103,6 +103,18 @@
 pg_dump -Fc -f /backups/mydb_$(date +%F).dump -U myuser -h 127.0.0.1 mydb
 ```
 
+Вариант 2: текстовый SQL-дамп
+
+Текстовый дамп восстанавливают через psql (а не pg_restore). Официальная документация даёт типовую форму: psql -X dbname < dumpfile.
+
+```bash
+# backup
+pg_dump -f /backups/mydb_$(date +%F).sql -U myuser -h 127.0.0.1 mydb
+
+# restore
+psql -X -U myuser -h 127.0.0.1 mydb_restore < /backups/mydb_2025-12-29.sql
+```
+
 
 Восстановление (restore)
 
