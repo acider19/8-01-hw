@@ -44,10 +44,14 @@ hydra -L users.txt -P pass.txt < ip-адрес > ssh
 
 ---
 
-Атака проводилась на хост 62.113.100.4
-![attack](/img/screen2.png)
+Атакующий хост 89.169.162.54 (публичный адрес виртуальной машины в yandex cloud)
+![attacking host](/img/screen5.png)
 
+Атакуемый хост 62.113.100.4 (VPS сервер)
 ![victim host](/img/screen3.png)
+
+Проведение атаки
+![attack](/img/screen2.png)
 
 В логах fail2ban зафиксированы попытки подбора пароля к ssh серверу
 ![logs fail2ban](/img/screen4.png)
