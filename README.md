@@ -22,7 +22,7 @@ sudo nmap -sV < ip-адрес >
 ---
 
 При выполнении всех вариантов команды nmap в логах suricata одинаковые записи, сигнализирующие о том, что с адреса 10.129.0.27 производится сканирование TCP-портов 3306 (mySQL), 5800-5820 (VNC), 1433 (MSSQL), 5432 (PostgeSQL), 1521 (Oracle SQL)
-![suricata](/img/screen1)
+![suricata](/img/screen1.png)
 
 ---
 
